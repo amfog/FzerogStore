@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FOG STORE — Business Plan & Brand Vision</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --fog: #8BACC8;
+      --fog-light: #C5D8E8;
+      --fog-dark: #1A2A3A;
+      --void: #080E14;
+      --gold: #C8A84B;
+      --cyan: #4BCFCC;
+      --text: #D8E8F0;
+      --muted: #5A7A90;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--void);
+      color: var(--text);
+      font-family: 'Rajdhani', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* ── NOISE OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.35;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      padding: 2rem;
+      background: radial-gradient(ellipse 80% 60% at 50% 40%, #0D2035 0%, var(--void) 70%);
+      overflow: hidden;
+    }
+
+    .hero-fog {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 30% at 50% 80%, rgba(139,172,200,0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 20% at 20% 60%, rgba(75,207,204,0.05) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 20% at 80% 40%, rgba(200,168,75,0.04) 0%, transparent 60%);
+      animation: fogDrift 8s ease-in-out infinite alternate;
+    }
+
+    @keyframes fogDrift {
+      from { opacity: 0.6; transform: scaleX(1); }
+      to   { opacity: 1;   transform: scaleX(1.05); }
+    }
+
+    .hero-line {
+      width: 1px;
+      height: 80px;
+      background: linear-gradient(to bottom, transparent, var(--fog), transparent);
+      margin-bottom: 2rem;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.4; }
+      50% { opacity: 1; }
+    }
+
+    .hero-eyebrow {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.4em;
+      color: var(--cyan);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.3s forwards;
+    }
+
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(5rem, 18vw, 14rem);
+      line-height: 0.85;
+      letter-spacing: 0.05em;
+      background: linear-gradient(135deg, #fff 0%, var(--fog-light) 40%, var(--fog) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.5s forwards;
+      position: relative;
+    }
+
+    .hero-title .gold { 
+      background: linear-gradient(135deg, #E8C870 0%, var(--gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-top: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.7s forwards;
+    }
+
+    .hero-tagline {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.85rem;
+      color: var(--fog);
+      margin-top: 2.5rem;
+      max-width: 500px;
+      line-height: 1.8;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.9s forwards;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2rem;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      color: var(--muted);
+      animation: bounce 2s ease-in-out infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(6px); }
+    }
+
+    /* ── SECTION BASE ── */
+    section {
+      padding: 5rem 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.5em;
+      color: var(--cyan);
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      line-height: 1;
+      background: linear-gradient(135deg, #fff, var(--fog));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1rem;
+    }
+
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--fog-dark), var(--fog), var(--fog-dark), transparent);
+      margin: 0;
+    }
+
+    /* ── BRAND SECTION ── */
+    .brand-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .brand-card {
+      background: linear-gradient(135deg, rgba(139,172,200,0.06) 0%, rgba(8,14,20,0.8) 100%);
+      border: 1px solid rgba(139,172,200,0.15);
+      border-radius: 4px;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .brand-card:hover {
+      border-color: rgba(75,207,204,0.4);
+      transform: translateY(-3px);
+    }
+
+    .brand-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .brand-card:hover::before { opacity: 1; }
+
+    .card-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .card-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      letter-spacing: 0.05em;
+      color: var(--fog-light);
+      margin-bottom: 0.5rem;
+    }
+
+    .card-body {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ── PRODUCTS ── */
+    .products-section { background: rgba(13,32,53,0.3); }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .product-card {
+      border: 1px solid rgba(139,172,200,0.12);
+      border-radius: 4px;
+      overflow: hidden;
+      transition: transform 0.3s, border-color 0.3s;
+      cursor: pointer;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(200,168,75,0.4);
+    }
+
+    .product-thumb {
+      height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      position: relative;
+    }
+
+    .product-thumb.mouse   { background: linear-gradient(135deg, #0D1B2A, #1A3A5C); }
+    .product-thumb.pad     { background: linear-gradient(135deg, #0A1A10, #1A3A25); }
+    .product-thumb.banner  { background: linear-gradient(135deg, #1A0D2A, #3A1A5C); }
+    .product-thumb.hoodie  { background: linear-gradient(135deg, #1A1A1A, #2A2A35); }
+    .product-thumb.mug     { background: linear-gradient(135deg, #1A0A0A, #3A1A1A); }
+    .product-thumb.poster  { background: linear-gradient(135deg, #1A1A0A, #3A2A1A); }
+
+    .product-info {
+      padding: 1rem 1.2rem;
+      background: rgba(8,14,20,0.9);
+    }
+
+    .product-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.2rem;
+      letter-spacing: 0.05em;
+      color: var(--fog-light);
+    }
+
+    .product-desc {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-top: 0.25rem;
+    }
+
+    .product-tag {
+      display: inline-block;
+      margin-top: 0.6rem;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      border: 1px solid rgba(200,168,75,0.3);
+      padding: 2px 8px;
+      border-radius: 2px;
+    }
+
+    /* ── ROADMAP ── */
+    .roadmap {
+      position: relative;
+      margin-top: 3rem;
+    }
+
+    .roadmap::before {
+      content: '';
+      position: absolute;
+      left: 24px;
+      top: 0; bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--cyan), var(--fog), transparent);
+    }
+
+    .phase {
+      display: flex;
+      gap: 2rem;
+      margin-bottom: 3rem;
+      padding-left: 0;
+      position: relative;
+    }
+
+    .phase-dot {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 2px solid var(--fog);
+      background: var(--void);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1rem;
+      color: var(--cyan);
+      position: relative;
+      z-index: 1;
+      transition: border-color 0.3s, background 0.3s;
+    }
+
+    .phase:hover .phase-dot {
+      border-color: var(--cyan);
+      background: rgba(75,207,204,0.1);
+    }
+
+    .phase-content {
+      flex: 1;
+      padding-top: 0.5rem;
+    }
+
+    .phase-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.8rem;
+      color: var(--fog-light);
+      letter-spacing: 0.05em;
+    }
+
+    .phase-time {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--gold);
+      letter-spacing: 0.3em;
+      margin-bottom: 0.75rem;
+    }
+
+    .phase-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .phase-list li {
+      font-size: 0.95rem;
+      color: var(--muted);
+      padding-left: 1.2rem;
+      position: relative;
+    }
+
+    .phase-list li::before {
+      content: '›';
+      position: absolute;
+      left: 0;
+      color: var(--cyan);
+    }
+
+    /* ── REVENUE ── */
+    .revenue-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .rev-card {
+      text-align: center;
+      padding: 2rem 1rem;
+      border: 1px solid rgba(139,172,200,0.1);
+      border-radius: 4px;
+      background: rgba(13,32,53,0.4);
+      transition: border-color 0.3s;
+    }
+
+    .rev-card:hover { border-color: rgba(200,168,75,0.3); }
+
+    .rev-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3rem;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .rev-label {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      color: var(--muted);
+      margin-top: 0.5rem;
+    }
+
+    .rev-desc {
+      font-size: 0.85rem;
+      color: var(--fog);
+      margin-top: 0.5rem;
+    }
+
+    /* ── MARKETING ── */
+    .marketing-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      margin-top: 3rem;
+    }
+
+    .mkt-block h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      color: var(--fog-light);
+      margin-bottom: 1rem;
+      letter-spacing: 0.05em;
+    }
+
+    .mkt-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .mkt-list li {
+      font-size: 0.92rem;
+      color: var(--muted);
+      padding: 0.6rem 0.8rem;
+      border-left: 2px solid rgba(75,207,204,0.25);
+      line-height: 1.5;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .mkt-list li:hover {
+      border-color: var(--cyan);
+      color: var(--text);
+    }
+
+    .mkt-list li strong {
+      color: var(--fog-light);
+      font-weight: 700;
+    }
+
+    /* ── CTA ── */
+    .cta-section {
+      text-align: center;
+      padding: 6rem 2rem;
+      background: linear-gradient(to bottom, var(--void), #0D1E2E, var(--void));
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: 'FOG';
+      position: absolute;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 30vw;
+      color: rgba(139,172,200,0.03);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      letter-spacing: 0.1em;
+    }
+
+    .cta-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      line-height: 1;
+      background: linear-gradient(135deg, var(--fog-light), var(--gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1.5rem;
+    }
+
+    .cta-body {
+      max-width: 550px;
+      margin: 0 auto 2.5rem;
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.15em;
+      padding: 0.85rem 2.5rem;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--fog) 0%, var(--cyan) 100%);
+      color: var(--void);
+      border: none;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(75,207,204,0.25);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--fog-light);
+      border: 1px solid rgba(139,172,200,0.35);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--fog);
+      background: rgba(139,172,200,0.08);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid rgba(139,172,200,0.08);
+      padding: 2rem;
+      text-align: center;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      color: rgba(90,122,144,0.6);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 700px) {
+      .brand-grid, .revenue-grid, .marketing-cols { grid-template-columns: 1fr; }
+      .products-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 400px) {
+      .products-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-fog"></div>
+    <div class="hero-line"></div>
+    <p class="hero-eyebrow">Business Plan &amp; Brand Vision · 2025</p>
+    <h1 class="hero-title">FOG<br><span class="gold">STORE</span></h1>
+    <p class="hero-sub">Wild Rift · Streaming · Gaming Gear</p>
+    <p class="hero-tagline">// A streamer-owned shop for gamers who live in the fog.<br>Setup gear, mousepads, banners &amp; more — all Fog-branded.</p>
+    <div class="scroll-hint">SCROLL TO EXPLORE ↓</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- BRAND IDENTITY -->
+  <section>
+    <p class="section-label">01 · Brand Identity</p>
+    <h2 class="section-title">Who Is Fog Store?</h2>
+    <p style="color:var(--muted); font-size:1rem; line-height:1.8; max-width:700px;">
+      Fog Store is <em style="color:var(--fog-light)">your brand</em> — built on your streaming persona, your Wild Rift community, and your aesthetic. You're not just a shop, you're a creator brand that sells gear fans actually want because they already trust <em>you</em>.
+    </p>
+    <div class="brand-grid">
+      <div class="brand-card">
+        <div class="card-icon">🌫️</div>
+        <div class="card-title">The Fog Aesthetic</div>
+        <div class="card-body">Dark, moody, cool. League of Legends Wild Rift energy — maps shrouded in fog, clutch plays hiding in the dark. Your brand colors: deep navy, mist blue, and gold accents.</div>
+      </div>
+      <div class="brand-card">
+        <div class="card-icon">🎮</div>
+        <div class="card-title">Creator-First Trust</div>
+        <div class="card-body">Your audience already watches you play. When you use Fog gear on stream, it becomes a live ad. No influencer deal needed — you ARE the influencer.</div>
+      </div>
+      <div class="brand-card">
+        <div class="card-icon">⚔️</div>
+        <div class="card-title">Wild Rift Culture</div>
+        <div class="card-body">Design products around champions, in-game concepts, rank culture, and phrases your community says. Fans buy things that feel like inside jokes they're part of.</div>
+      </div>
+      <div class="brand-card">
+        <div class="card-icon">🏆</div>
+        <div class="card-title">Setup Credibility</div>
+        <div class="card-body">Showcase YOUR setup on stream. Use your own products. Viewers will ask "what mousepad is that?" — and the answer is always Fog Store.</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- PRODUCTS -->
+  <section class="products-section" style="max-width:100%; padding: 5rem 2rem;">
+    <div style="max-width:1100px; margin:0 auto;">
+      <p class="section-label">02 · Product Lineup</p>
+      <h2 class="section-title">What You'll Sell</h2>
+      <p style="color:var(--muted); font-size:0.95rem; line-height:1.8; max-width:600px;">Start with 3–4 hero products, then expand. Use <strong style="color:var(--fog-light)">print-on-demand</strong> (Printful / Printify) to keep zero inventory risk at launch.</p>
+      <div class="products-grid">
+        <div class="product-card">
+          <div class="product-thumb mouse">🖱️</div>
+          <div class="product-info">
+            <div class="product-name">Gaming Mouse</div>
+            <div class="product-desc">White-label or branded collab mouse with Fog logo engraving</div>
+            <span class="product-tag">HERO PRODUCT</span>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-thumb pad">🟩</div>
+          <div class="product-info">
+            <div class="product-name">Fog Mousepads</div>
+            <div class="product-desc">XL desk mats with Wild Rift map art or fog cloud designs</div>
+            <span class="product-tag">LAUNCH DAY</span>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-thumb banner">🎌</div>
+          <div class="product-info">
+            <div class="product-name">Stream Banners</div>
+            <div class="product-desc">Custom overlay packs, starting screen banners, room wall banners</div>
+            <span class="product-tag">DIGITAL + PHYSICAL</span>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-thumb hoodie">🧥</div>
+          <div class="product-info">
+            <div class="product-name">Fog Hoodie</div>
+            <div class="product-desc">Premium heavyweight hoodie — embroidered Fog logo, dark colorways</div>
+            <span class="product-tag">LAUNCH DAY</span>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-thumb mug">☕</div>
+          <div class="product-info">
+            <div class="product-name">Setup Mugs</div>
+            <div class="product-desc">Low cost, high margin. "Fog Energy" mug. Easy gift item.</div>
+            <span class="product-tag">EASY WIN</span>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-thumb poster">🖼️</div>
+          <div class="product-info">
+            <div class="product-name">Digital Overlays</div>
+            <div class="product-desc">Stream overlay packs — instant download, 100% profit margin</div>
+            <span class="product-tag">HIGH MARGIN</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ROADMAP -->
+  <section>
+    <p class="section-label">03 · Launch Roadmap</p>
+    <h2 class="section-title">The Plan</h2>
+    <div class="roadmap">
+
+      <div class="phase">
+        <div class="phase-dot">01</div>
+        <div class="phase-content">
+          <div class="phase-time">// WEEK 1–2 · FOUNDATION</div>
+          <div class="phase-title">Build the Brand</div>
+          <ul class="phase-list">
+            <li>Lock in the Fog Store name, logo &amp; color palette (navy, mist blue, gold)</li>
+            <li>Create social accounts: TikTok, Instagram, Twitter/X under @FogStore</li>
+            <li>Design 2–3 products with Printify or local print shop</li>
+            <li>Set up Shopify store (Basic plan, ~$29/mo) with Fog theme</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="phase">
+        <div class="phase-dot">02</div>
+        <div class="phase-content">
+          <div class="phase-time">// WEEK 3–4 · HYPE BUILD</div>
+          <div class="phase-title">Tease the Drop</div>
+          <ul class="phase-list">
+            <li>Show behind-the-scenes of product design on stream &amp; TikTok</li>
+            <li>Use your mousepad on stream — let chat ask about it organically</li>
+            <li>Create a "Founding Member" waitlist — first 50 get a discount code</li>
+            <li>Post "Fog Store coming soon" content 3x per week</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="phase">
+        <div class="phase-dot">03</div>
+        <div class="phase-content">
+          <div class="phase-time">// MONTH 2 · LAUNCH</div>
+          <div class="phase-title">Go Live</div>
+          <ul class="phase-list">
+            <li>Launch stream: unbox your own products on camera with chat watching</li>
+            <li>Limited first drop — 50 units per product to create scarcity</li>
+            <li>Pin shop link in all bios; add to stream overlay as lower-third</li>
+            <li>Collab with 1–2 other Wild Rift streamers for cross-promotion</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="phase">
+        <div class="phase-dot">04</div>
+        <div class="phase-content">
+          <div class="phase-time">// MONTH 3–6 · GROW</div>
+          <div class="phase-title">Scale &amp; Expand</div>
+          <ul class="phase-list">
+            <li>Launch digital products (overlays, sound packs) for 100% margin revenue</li>
+            <li>Introduce monthly "Fog Drop" — limited edition seasonal items</li>
+            <li>Build email list via post-purchase flows (free with Shopify)</li>
+            <li>Explore affiliate program: let other streamers earn % on referrals</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- REVENUE MODEL -->
+  <section>
+    <p class="section-label">04 · Revenue Model</p>
+    <h2 class="section-title">How You Make Money</h2>
+    <div class="revenue-grid">
+      <div class="rev-card">
+        <div class="rev-num">40–60%</div>
+        <div class="rev-label">// MARGIN ON MERCH</div>
+        <div class="rev-desc">Physical products via print-on-demand. No inventory, no upfront cost.</div>
+      </div>
+      <div class="rev-card">
+        <div class="rev-num">90%+</div>
+        <div class="rev-label">// MARGIN ON DIGITAL</div>
+        <div class="rev-desc">Stream overlays, wallpapers &amp; digital banner packs. Sell once, earn forever.</div>
+      </div>
+      <div class="rev-card">
+        <div class="rev-num">$0</div>
+        <div class="rev-label">// COST OF MARKETING</div>
+        <div class="rev-desc">Your stream IS the ad. Every session with Fog gear is a live product placement.</div>
+      </div>
+    </div>
+
+    <div style="margin-top: 2.5rem; padding: 1.5rem 2rem; border: 1px solid rgba(200,168,75,0.2); border-radius:4px; background: rgba(200,168,75,0.04);">
+      <p style="font-family:'Share Tech Mono',monospace; font-size:0.75rem; color:var(--gold); letter-spacing:0.3em; margin-bottom:0.75rem;">// REALISTIC FIRST-YEAR SCENARIO</p>
+      <p style="color:var(--muted); font-size:0.95rem; line-height:1.8;">
+        If 2% of your stream viewers buy 1 item per month, and your avg order is $35, with 500 regular viewers that's ~$350/mo from merch alone. Add digital products and a growing community — <strong style="color:var(--fog-light)">$1,000–2,500/mo</strong> is very achievable by month 6.
+      </p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- MARKETING STRATEGY -->
+  <section>
+    <p class="section-label">05 · Marketing Strategy</p>
+    <h2 class="section-title">How To Get Customers</h2>
+    <div class="marketing-cols">
+      <div class="mkt-block">
+        <h3>🔴 Live Stream Tactics</h3>
+        <ul class="mkt-list">
+          <li><strong>Use it on stream.</strong> Your mousepad, hoodie, mug — all visible on cam. Viewers will ask.</li>
+          <li><strong>Stream milestones.</strong> "When we hit 100 subs, I'm dropping a new Fog item."</li>
+          <li><strong>Chat alerts.</strong> When someone buys, trigger a sound + chat shoutout.</li>
+          <li><strong>Unboxing streams.</strong> New drop reveals become events your community tunes in for.</li>
+        </ul>
+      </div>
+      <div class="mkt-block">
+        <h3>📱 Social Content</h3>
+        <ul class="mkt-list">
+          <li><strong>TikTok/Reels.</strong> "Setup tour" content, unboxings, and "what I use to play Wild Rift" videos convert extremely well.</li>
+          <li><strong>Twitter/X.</strong> Announce drops, post gameplay clips, hype the community.</li>
+          <li><strong>Behind the scenes.</strong> Show product design process — fans love feeling involved.</li>
+          <li><strong>Wild Rift hashtags.</strong> Tap into the existing game community beyond your own followers.</li>
+        </ul>
+      </div>
+      <div class="mkt-block">
+        <h3>🤝 Community & Collabs</h3>
+        <ul class="mkt-list">
+          <li><strong>Collab drops.</strong> Partner with another Wild Rift streamer for a limited co-branded item.</li>
+          <li><strong>Give merch to top supporters.</strong> They become walking ads and brand ambassadors.</li>
+          <li><strong>Discord shop channel.</strong> Post deals, new drops, and exclusive member codes.</li>
+        </ul>
+      </div>
+      <div class="mkt-block">
+        <h3>🛒 Shop Optimization</h3>
+        <ul class="mkt-list">
+          <li><strong>Shopify or Fourthwall.</strong> Fourthwall is free and made for streamers — no monthly fee.</li>
+          <li><strong>Bundle deals.</strong> "The Fog Setup" bundle: mousepad + mug + banner pack.</li>
+          <li><strong>Email capture.</strong> Offer 10% off first order for signup. Own your audience.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <h2 class="cta-title">You Already Have<br>Everything You Need</h2>
+    <p class="cta-body">
+      A community, a brand, and a screen time. Most shops spend thousands on marketing to get what you already have — an audience that trusts you. Fog Store is the next chapter.
+    </p>
+    <div class="btn-group">
+      <a class="btn btn-primary" href="#">Start Fog Store Today</a>
+      <a class="btn btn-secondary" href="#">fourthwall.com · Free for Streamers</a>
+    </div>
+  </div>
+
+  <footer>
+    FOG STORE · BUSINESS PLAN 2025 · BUILT FOR THE FOG, BY THE FOG
+  </footer>
+
+</body>
+</html>
